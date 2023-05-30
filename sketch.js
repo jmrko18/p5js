@@ -1,24 +1,53 @@
-let x = 10;
-let y = 1000;
 
+
+let chodci = []
 
 function setup() {
-  createCanvas(1000, 1000);
+  createCanvas(500, 500);
+  background(51);
+  
+ for(let i = 0; i < 100; i = i + 1) {
+  let ch = new chodec (color(random(255),random(255),random(255)));
+  chodci.push(ch)
+
+ }
+
+
+
 }
+
+
 
 function draw() {
-  background(89, 72, 4);
-  rect(x, y, 10);
-  x = x + 5
-  y = y - 5
-
-  if (x > 1000) {
-    x = 0
-  }
-
-  if (y < 0) {
-    y = 1000
-  }
+  for(let i = 0; i < 100; i = i + 1) {
+  let ch = chodci[i];
+  ch.update()
+  ch.draw()
+   }
+  
+  
+  
+  
 
 }
 
+
+class chodec {
+  constructor(C){
+    //this.pos = p5.Vector.random2D();
+    this.pos = createVector(250,250)
+    this.color = C
+   }
+    draw(){
+      noStroke()
+      fill(this.color)
+      rect(this.pos.x,this.pos.y,1);
+    }
+
+    update(){
+      let step = p5.Vector.random2D();
+      this.pos.add(step);
+  }
+
+
+}
